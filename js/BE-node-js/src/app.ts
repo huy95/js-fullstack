@@ -1,8 +1,7 @@
 const express = require('express')
 import 'dotenv/config'
-// import connect from './config/database'
-// import getDatabase from './config/database';
-// import webRoutes from './routes/web';
+import connect from './config/database'
+import getDatabase from './config/database';
 
 
 const app = express()
@@ -13,11 +12,10 @@ try {
 } catch(_) {
 
 }
-
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-// getDatabase();
-// webRoutes(app);
+getDatabase();
+app.get("/", (req, res) => {
+  res.send("hello word");
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${process.env.PORT}`)
 })
