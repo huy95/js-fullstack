@@ -1,54 +1,62 @@
 import { Button, Input, Modal } from "antd";
-import { useState } from "react";
-import { createUserAPI } from "../../services/axio.customer";
+import { useState, useEffect } from "react";
+import {updateUserAPI} from '../../services/axio.customer'
 
-const UserForm = (props) => {
+const UserUpdateForm = (props) => {
 
-    const {loadUser} = props;
-    const [fullName, setFullName] = useState("");
+    const { loadUser } = props;
+    const [id, setId] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassWord] = useState("")
+    const [fullName, setFullName] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
-    const [isModalOpen, setOpenModel] = useState(false);
+    const { isModalUpdateOpen, setOpenUpdateModel, dataUpdate,
+        setDataUpdate } = props;
 
-    console.log(fullName)
+    useEffect(() => {
+        if (dataUpdate && isModalUpdateOpen) {
+            setFullName(dataUpdate.fullName)
+            setEmail(dataUpdate.email)
+            setId(dataUpdate._id)
+            setPhoneNumber(dataUpdate.phone)
+        }
+    }, [dataUpdate, isModalUpdateOpen])
+
     const handleSubmitBtn = async () => {
         try {
-            const response = await createUserAPI(fullName, email, password, phoneNumber);
-
+        
+            const response = await updateUserAPI(fullName, id, phoneNumber);
+            
             console.log(response)
+            debugger
             if (response.data) {
                 setFullName("")
                 setEmail("")
-                setPassWord("")
+                setId("")
                 setPhoneNumber("")
-                setOpenModel(false)
+                setOpenUpdateModel(false)
                 await loadUser();
-                alert("Tạo tài khoản thành công!");
+                await setDataUpdate();
+
             } else {
                 alert(JSON.stringify(response.message))
             }
 
 
         } catch (error) {
+            debugger
             console.error("Lỗi khi gọi API:", error);
             alert("Đã có lỗi xảy ra khi tạo tài khoản" + error);
         }
     }
     return (<div>
-
-        <div style={{ display: "flex", justifyContent: "space-between", padding: "10px" }}>
-            <div>Table User</div>
-            <Button onClick={() => setOpenModel(true)}>Create User</Button>
-        </div>
-        <Modal title="Basic Modal" open={isModalOpen} onCancel={() => setOpenModel(false)} onOk={() => handleSubmitBtn()}>
+        <Modal title="Basic Modal" open={isModalUpdateOpen} onCancel={() => setOpenUpdateModel(false)} onOk={() => handleSubmitBtn()}>
             <div style={{ padding: '10px', display: 'flex', flexDirection: 'column' }}>
-                <div className="body-text">FullName1</div>
+                <div className="body-text">id</div>
+                <Input value={id} />
+                <div className="body-text">fullName</div>
                 <Input value={fullName} onChange={(event) => setFullName(event.target.value)} />
                 <div className="body-text">Email</div>
                 <Input value={email} onChange={(event) => setEmail(event.target.value)} />
-                <div className="body-text">Password</div>
-                <Input.Password value={password} onChange={(event) => setPassWord(event.target.value)} />
                 <div className="body-text">Phone number</div>
                 <Input value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} />
             </div>
@@ -58,4 +66,4 @@ const UserForm = (props) => {
 }
 
 
-export default UserForm;
+export default UserUpdateForm;

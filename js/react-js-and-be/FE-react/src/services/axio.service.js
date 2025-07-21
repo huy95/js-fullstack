@@ -6,17 +6,12 @@ const instance = axios.create({ baseURL: import.meta.env.VITE_BE_URL })
 instance.interceptors.response.use(
     function (response) {    // Xử lý thành công (status 200 - 299)
         const { statusCode, message } = response.data;
-
-        if (statusCode && statusCode !== 200) {
-            alert("Lỗi nghiệp vụ: " + JSON.stringify(message));
-            return Promise.reject(response.data);   // Đẩy về catch
-        }
-
-        return response.data.data;  // Trả về nếu không có lỗi
+        debugger
+        return response.data;  // Trả về nếu không có lỗi
     },
 
     function (error) {   // Xử lý lỗi HTTP >= 400
-
+        debugger
         if (error.response && error.response.data) {
 
             return error.response.data

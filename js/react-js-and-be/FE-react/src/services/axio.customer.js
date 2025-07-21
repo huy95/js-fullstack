@@ -18,4 +18,17 @@ const fetchAllUserAPI = async () => {
     return await instance.get(URL_BE)
 }
 
-export { createUserAPI, fetchAllUserAPI }
+const updateUserAPI = async (fullName, id, phone) => {
+    const URL_BE = "/v1/user";
+    const data = {
+        fullName: fullName,
+        _id: id,
+        phone: phone
+    }
+    debugger
+
+    return await instance.put(URL_BE, data)
+}
+
+
+export { createUserAPI, fetchAllUserAPI, updateUserAPI }
