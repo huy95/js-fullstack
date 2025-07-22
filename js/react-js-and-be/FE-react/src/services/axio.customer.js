@@ -52,7 +52,7 @@ const pushImage = async (file, folder) => {
         }
     }
     const bodyFormData = new FormData();
-    bodyFormData.append("file", file);
+    bodyFormData.append("fileImg", file);
     
     return await instance.post(URL_BE, bodyFormData, config)
 }

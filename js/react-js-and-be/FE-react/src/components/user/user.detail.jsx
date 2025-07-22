@@ -4,7 +4,7 @@ import { pushImage, updateUserAvatarAPI } from "../../services/axio.customer";
 
 
 const UserDetail = (props) => {
-    const { dataUpdate, isShowDetailOpen, setOpenDetailModel } = props;
+    const { dataUpdate, isShowDetailOpen, setOpenDetailModel, loadUser } = props;
     const [fileSelected, setFileSelected] = useState(null);
     const [previewImage, setPreviewImage] = useState(null);
 
@@ -20,12 +20,16 @@ const UserDetail = (props) => {
 
     const handlePushImage = async () => {
         const newUpload = await pushImage(fileSelected, "avatar");
-        debugger
+        
         if (newUpload.data) {
             const newData = await updateUserAvatarAPI(dataUpdate.fullName, dataUpdate._id, dataUpdate.phone, newUpload.data.fileUpLoad);
             if (newData.data) {
-                alert("Cập nhật thành công");
                 setOpenDetailModel(false);
+                setFileSelected(null);
+                setPreviewImage(null);
+                loadUser()
+                alert("Cập nhật thành công");
+            
             } else {
                 alert("Cập nhật thất bại: " + JSON.stringify(newData.message));
             }

@@ -5,8 +5,9 @@ import UserUpdateForm from './user.update'
 import { deleteUserAPI } from '../../services/axio.customer';
 import UserDetail from './user.detail';
 
+
 const UserTable = (props) => {
-    const { dataUsers } = props;
+    const { dataUsers, loadUser } = props;
     const [isModalUpdateOpen, setOpenUpdateModel] = useState(false);
     const [dataUpdate, setDataUpdate] = useState(null);
     const [isShowDetailOpen, setOpenDetailModel] = useState(false);
@@ -82,6 +83,7 @@ const UserTable = (props) => {
                 dataUpdate={dataUpdate}
                 isShowDetailOpen={isShowDetailOpen}
                 setOpenDetailModel={setOpenDetailModel}
+                loadUser={loadUser}
             />
         </div>
     );
