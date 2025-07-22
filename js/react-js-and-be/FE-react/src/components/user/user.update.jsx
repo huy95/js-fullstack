@@ -27,7 +27,7 @@ const UserUpdateForm = (props) => {
             const response = await updateUserAPI(fullName, id, phoneNumber);
             
             console.log(response)
-            debugger
+        
             if (response.data) {
                 setFullName("")
                 setEmail("")
@@ -43,7 +43,7 @@ const UserUpdateForm = (props) => {
 
 
         } catch (error) {
-            debugger
+        
             console.error("Lỗi khi gọi API:", error);
             alert("Đã có lỗi xảy ra khi tạo tài khoản" + error);
         }
