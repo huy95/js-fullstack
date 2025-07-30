@@ -1,18 +1,20 @@
-function App() {
+import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Route, Routes } from "react-router-dom";
 
-  return (
-    <>
-      <div>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+import {CreatePage} from "./pages/CreatePage";
+import HomePage from "./pages/HomePage";
+import Navbar from "./components/NavBar";
+
+function App() {
+	return (
+		<Box minH={"100vh"} bg={useColorModeValue("gray.100", "gray.900")}>
+			<Navbar />
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+				<Route path='/create' element={<CreatePage />} />
+			</Routes>
+		</Box>
+	);
 }
 
-export default App
+export default App;
