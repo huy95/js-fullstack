@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+}
+
+.header .top_header {
+    max-width: 100%;
+    display: flex;
+    padding: 10px 10px;
+    background: #f6f7f8;
+}
+
+.header .top_header .icon {
+    margin-left: 20px;
+    color: #ababab;
+    font-size: 19;
+}
+
+.header .top_header .info p {
+    margin-left: 10px;
+    color: #8a8a8a;
+}
+
+.mid_header {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mid_header .logo img {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    object-fit: cover;
+    margin-left: 15px;
+}
+
+.mid_header .search-box input {
+    padding: 10px 10px;
+    outline: none;
+    background: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 250px;
+    border: none;
+    border: 1px solid #8a8a8a;
+}
+
+.mid_header .search-box button {
+    padding: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    outline: none;
+    border: 1px solid #cd1e76;
+    width: 50px;
+    background: #cd1e76;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 30px;
+    transition: 0.5s;
+}
+
+.mid_header .search-box button :hover {
+    background: #fed700;
+    color: #cd1e76;
+}
+
+.header .mid_header .user {
+    display: flex;
+    margin-right: 30px;
+}
+
+.user .icon {
+    margin-right: 10px;
+}
+
+.header .mid_header .user button {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: none;
+    cursor: pointer;
+}
+
+.header .last-header {
+    width: 100%;
+    display: flex;
+    background: #232323;
+    justify-content: space-between;
+}
+
+.last-header .avatar {
+    display: flex;
+}
+
+.last-header .avatar .icon {
+    padding: 10px 10px;
+    background: #fff;
+    margin: 20px;
+}
+
+.profile-user h3 {
+    color: #fff;
+    padding-top: 15px;
+}
+
+.profile-user h5 {
+    color: #ababab;
+}
+
+.last-header .nav {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.last-header .nav ul li {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.last-header .nav ul li .link {
+    color: white;
+    text-decoration: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.last-header .nav ul li .link :hover {
+    color: #fed700;
+}
+
+.last-header .offer {
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 15px;
+    background-color: #fcd700;
+    border-radius: 10px;
+}
+

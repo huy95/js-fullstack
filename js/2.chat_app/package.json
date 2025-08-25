@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "daisyui": "^4.12.23",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.8.1",
+    "zustand": "^5.0.7"
+  }
+}
