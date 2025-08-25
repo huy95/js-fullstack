@@ -1,14 +1,11 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-
-const connectDB = async () => {
-    console.log(process.env.MONGO_URI)
-    try {
-        const connect = await mongoose.connect(process.env.MONGO_URI)
-        console.log( "connect db"+ connect.connection.host)
-    } catch (error){
-        console.log("❌ connect db fault:" + error.message)
-    }
-}
-
-export default connectDB
+export const connectDB = async () => {
+	try {
+		const conn = await mongoose.connect(process.env.MONGO_URI);
+		console.log(`MongoDB Connected: ${conn.connection.host}`);
+	} catch (error) {
+		console.error(`Error: ${error.message}`);
+		process.exit(1); // process code 1 code means exit with failure, 0 means success
+	}
+};

@@ -1,23 +1,26 @@
-# dependencies
-node_modules/
-.pnp/
-.pnp.js
-
-# testing
-coverage/
-
-# production
-build/
-dist/
-
-# misc
-.DS_Store
-.env
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# lock files (nếu không dùng)
-# package-lock.json
-# pnpm-lock.yaml
-# yarn.lock
+node_modules
+dist
+dist-ssr
+*.local
+
+.env
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
